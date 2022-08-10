@@ -9,7 +9,7 @@ const Input = ({ name, initialValue, autoComplete , labelText }) => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       {labelText && <label htmlFor={name}>{labelText}</label>}
       <input
         id={name}
@@ -17,7 +17,7 @@ const Input = ({ name, initialValue, autoComplete , labelText }) => {
         autoComplete={autoComplete ? "on" : "off"}
         onChange={changeHandler}
       />
-    </React.Fragment>
+    </div>
   );
 };
 
