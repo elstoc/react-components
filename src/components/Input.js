@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 
-const Input = ({ name, initialValue, autoComplete , labelText }) => {
+const Input = ({
+  name,
+  initialValue,
+  autoComplete,
+  labelText,
+  inputHandler
+}) => {
 
   const [ inputValue, setInputValue ] = useState(initialValue);
 
   const changeHandler = (event) => {
-    setInputValue(event.target.value);
+    const newValue = inputHandler ? inputHandler(event.target.value) : event.target.value;
+    setInputValue(newValue);
   };
 
   return (
