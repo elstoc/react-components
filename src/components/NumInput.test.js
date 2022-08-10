@@ -19,4 +19,14 @@ describe("that the NumInput Component", () => {
     const sameInputElement = screen.getByDisplayValue('5678eE.-');
     expect(sameInputElement).toBeInTheDocument();
   });
+
+  it('disallows eE. for integer inputs', () => {
+    render(<NumInput name="test" numType="int" initialValue="1234" />);
+
+    const inputElement = screen.getByDisplayValue('1234');
+    fireEvent.change(inputElement, { target: { value: '5678abcdeE.-' } });
+
+    const sameInputElement = screen.getByDisplayValue('5678-');
+    expect(sameInputElement).toBeInTheDocument();
+  });
 });
