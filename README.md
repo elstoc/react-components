@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Chris's Component Library
+
+This is intended to be a reusable set of components for use in my websites.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+The Create React App README follows for reference...
+
+---
 
 ## Available Scripts
 
