@@ -21,7 +21,7 @@ describe("that the Input Component", () => {
   });
 
   it('renders a label when asked', () => {
-    render(<Input name="test" label="my label" />);
+    render(<Input name="test" labelText="my label" />);
     const labelElement = screen.getByLabelText('my label');
     expect(labelElement).toBeInTheDocument();
   });

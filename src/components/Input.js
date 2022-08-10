@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Input = ({ name, initialValue, autoComplete , label }) => {
+const Input = ({ name, initialValue, autoComplete , labelText }) => {
 
   const [ inputValue, setInputValue ] = useState(initialValue);
 
@@ -10,7 +10,7 @@ const Input = ({ name, initialValue, autoComplete , label }) => {
 
   return (
     <React.Fragment>
-      {label && <label htmlFor={name}>{label}</label>}
+      {labelText && <label htmlFor={name}>{labelText}</label>}
       <input
         id={name}
         value={inputValue}
