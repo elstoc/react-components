@@ -16,9 +16,37 @@ describe("that the Input Component", () => {
 
     const inputElement = screen.getByDisplayValue('starting point');
     fireEvent.change(inputElement, { target: { value: 'ending point' } });
+    expect(inputElement).toHaveValue('ending point');
 
-    const sameInputElement = screen.getByDisplayValue('ending point');
-    expect(sameInputElement).toBeInTheDocument();
+  });
+
+  it('has a revert button if one requested', async () => {
+    render(<Form><Input revertButton={true}  name="test" initialValue="starting point" /></Form>);
+
+    const buttonElement = screen.queryByRole('button');
+    expect(buttonElement).toBeInTheDocument();
+
+  });
+
+  it('reverts to initial value when revert button clicked', async () => {
+    render(<Form><Input name="test" revertButton={true} initialValue="starting point" /></Form>);
+
+    const inputElement = screen.getByDisplayValue('starting point');
+    fireEvent.change(inputElement, { target: { value: 'ending point' } });
+    expect(inputElement).toHaveValue('ending point');
+
+    const buttonElement = screen.getByRole('button');
+    fireEvent.click(buttonElement);
+    expect(inputElement).toHaveValue('starting point');
+
+  });
+
+  it('has no revert button if none requested', async () => {
+    render(<Form><Input name="test" initialValue="starting point" /></Form>);
+
+    const buttonElement = screen.queryByRole('button');
+    expect(buttonElement).toBeNull();
+
   });
 
   it('renders a label when asked', () => {

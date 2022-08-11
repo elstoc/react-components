@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Form>
-        <Input name="text input" initialValue="some text" />
+        <Input name="text input" revertButton={true} initialValue="some text" />
         <NumInput name="float input" labelText="float input" initialValue="1234" />
         <Button text="a button" />
       </Form>

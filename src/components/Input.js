@@ -1,12 +1,14 @@
 import { useContext, useEffect } from 'react';
 import FormContext from './FormContext';
+import Button from './Button';
 
 const Input = ({
   name,
   initialValue,
   autoComplete,
   labelText,
-  inputHandler
+  inputHandler,
+  revertButton
 }) => {
 
   const form = useContext(FormContext);
@@ -28,6 +30,10 @@ const Input = ({
     form.setValue(name, newValue);
   };
 
+  const revertHandler = () => {
+    setVal(name, initialValue);
+  };
+
   return (
     <div>
       {labelText && <label htmlFor={name}>{labelText}</label>}
@@ -37,6 +43,7 @@ const Input = ({
         autoComplete={autoComplete ? "on" : "off"}
         onChange={changeHandler}
       />
+      {revertButton && <Button text="revert" onClick={revertHandler} />}
     </div>
   );
 };
