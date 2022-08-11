@@ -3,7 +3,7 @@ import Input from './Input';
 
 const NumInput = (props) => {
 
-  const { numType } = props;
+  const { numType, ...otherProps } = props;
 
   const inputHandler = (value) => {
     if (numType === "int") {
@@ -13,7 +13,7 @@ const NumInput = (props) => {
   };
 
   return (
-    <Input inputHandler={inputHandler} {...props} />
+    <Input inputHandler={inputHandler} {...otherProps} />
   )
 };
 
