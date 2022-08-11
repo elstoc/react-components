@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
       <Form>
-        <Input name="text input" initialValue="first initial" />
-        <NumInput name="numeric input" labelText="second label" initialValue="1234" />
+        <Input name="text input" initialValue="some text" />
+        <NumInput name="float input" labelText="float input" initialValue="1234" />
         <Button text="a button" />
       </Form>
     </div>
