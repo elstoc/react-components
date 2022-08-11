@@ -1,17 +1,18 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import NumInput from './NumInput';
+import Form from './Form';
 
 describe("that the NumInput Component", () => {
 
   it('shows an input pre-populated with initialValue', () => {
-    render(<NumInput name="test" initialValue="1234" />);
+    render(<Form><NumInput name="test" initialValue="1234" /></Form>);
 
     const inputElement = screen.getByDisplayValue('1234');
     expect(inputElement).toBeInTheDocument();
   });
 
   it('does not allow non-numeric input, except eE.-', () => {
-    render(<NumInput name="test" initialValue="1234" />);
+    render(<Form><NumInput name="test" initialValue="1234" /></Form>);
 
     const inputElement = screen.getByDisplayValue('1234');
     fireEvent.change(inputElement, { target: { value: '5678abcdeE.-' } });
@@ -21,7 +22,7 @@ describe("that the NumInput Component", () => {
   });
 
   it('disallows eE. for integer inputs', () => {
-    render(<NumInput name="test" numType="int" initialValue="1234" />);
+    render(<Form><NumInput name="test" numType="int" initialValue="1234" /></Form>);
 
     const inputElement = screen.getByDisplayValue('1234');
     fireEvent.change(inputElement, { target: { value: '5678abcdeE.-' } });

@@ -1,17 +1,18 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Input from './Input';
+import Form from './Form';
 
 describe("that the Input Component", () => {
 
   it('shows an input pre-populated with initialValue', () => {
-    render(<Input name="test" initialValue="starting point" />);
+    render(<Form><Input name="test" initialValue="starting point" /></Form>);
 
     const inputElement = screen.getByDisplayValue('starting point');
     expect(inputElement).toBeInTheDocument();
   });
 
   it('changes its value when updated', () => {
-    render(<Input name="test" initialValue="starting point" />);
+    render(<Form><Input name="test" initialValue="starting point" /></Form>);
 
     const inputElement = screen.getByDisplayValue('starting point');
     fireEvent.change(inputElement, { target: { value: 'ending point' } });
@@ -21,13 +22,13 @@ describe("that the Input Component", () => {
   });
 
   it('renders a label when asked', () => {
-    render(<Input name="test" labelText="my label" />);
+    render(<Form><Input name="test" labelText="my label" /></Form>);
     const labelElement = screen.getByLabelText('my label');
     expect(labelElement).toBeInTheDocument();
   });
 
   it('renders no label when not asked', () => {
-    render(<Input name="test" />);
+    render(<Form><Input name="test" /></Form>);
     const labelElement = screen.queryByLabelText('my label');
     expect(labelElement).toBeNull();
   });
